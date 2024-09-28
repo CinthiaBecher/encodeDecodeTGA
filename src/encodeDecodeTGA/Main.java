@@ -72,7 +72,7 @@ public class Main {
                         System.out.println(golomb.decode(input));
                         break;
                     case 2:
-                        System.out.println("Decodificando com Elias-Gamma: " + input);
+                        System.out.println(eliasGama.decode(input));
                         break;
                     case 3:
                         System.out.println("Decodificando com Fibonacci/Zeckendorf: " + input);
