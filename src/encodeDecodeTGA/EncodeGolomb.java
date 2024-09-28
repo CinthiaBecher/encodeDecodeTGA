@@ -7,6 +7,7 @@ public class EncodeGolomb implements Encoder{
 	private int prefixo;
 	private int sufixo;
 	private String caracterCodificado;
+	private String inputCodificado = "";
 	
 	public String encode(String input) {
 		System.out.println("Codificando com Golomb: " + input);
@@ -42,10 +43,12 @@ public class EncodeGolomb implements Encoder{
 			
 			System.out.println("Caracter: " + caracteresInput[i]);
 			System.out.println("Codigo: " + caracterCodificado);
-				
+			
+			inputCodificado = inputCodificado + caracterCodificado;
 		}
 		
-        return "Resultado da codificação Golomb de: ";
+		System.out.println("Resultado da codificação Golomb de: ");
+        return inputCodificado;
     }
 
 }

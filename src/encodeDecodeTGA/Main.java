@@ -36,8 +36,9 @@ public class Main {
         }
 
         // Solicita ao usuário a entrada para codificação/decodificação
+        scanner.nextLine(); 
         System.out.println("Digite o símbolo ou codeword que deseja processar:");
-        String input = scanner.next();
+        String input = scanner.nextLine();
 
         // Processa a entrada com base na operação e no método escolhido
         switch (operacao) {
