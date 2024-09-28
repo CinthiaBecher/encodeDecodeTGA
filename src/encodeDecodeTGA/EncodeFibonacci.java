@@ -1,6 +1,6 @@
 package encodeDecodeTGA;
 
-public class EncodeFibonacci {
+public class EncodeFibonacci implements Encoder{
 
 	
 	public String encode(String input) {
