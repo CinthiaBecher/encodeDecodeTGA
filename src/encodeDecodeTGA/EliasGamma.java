@@ -41,7 +41,7 @@ public class EliasGamma{
 	
 	
     public String decode(String input) {
-        StringBuilder decodedMessage = new StringBuilder();
+        String decodedMessage = "";
         int currentIndex = 0;
 
         // Percorrer o código Elias-Gamma completo
@@ -71,13 +71,13 @@ public class EliasGamma{
             int asciiOriginalNumber = (1 << N) + remainder;  // 2^N + restante binário
 
             // Converter o valor ASCII de volta para um caractere
-            decodedMessage.append((char) asciiOriginalNumber);
+            decodedMessage = decodedMessage + ((char) asciiOriginalNumber);
 
             // Avançar o índice para os próximos N bits
             currentIndex += N;
         }
 
-        return "Resultado da decodificação Elias-Gamma: " + decodedMessage.toString();
+        return "Resultado da decodificação Elias-Gamma: " + decodedMessage;
     }
 	
 

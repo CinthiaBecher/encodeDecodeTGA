@@ -73,7 +73,7 @@ public class Main {
                             System.out.println(eliasGama.decode(input));
                             break;
                         case 3:
-                            System.out.println("Decodificando com Fibonacci/Zeckendorf: " + input);
+                            System.out.println(fibonacci.decode(input));
                             break;
                         case 4:
                             System.out.println("Decodificando com Huffman: " + input);
