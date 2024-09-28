@@ -1,6 +1,6 @@
 package encodeDecodeTGA;
 
-public class EncodeHuffman implements Encoder{
+public class Huffman implements Encoder{
 
 	public String encode(String input) {
 		System.out.println("Codificando com Huffman: " + input);

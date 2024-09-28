@@ -39,33 +39,37 @@ public class Main {
         scanner.nextLine(); 
         System.out.println("Digite o símbolo ou codeword que deseja processar:");
         String input = scanner.nextLine();
-
+        
+        Golomb golomb = new Golomb();
+        EliasGamma eliasGama = new EliasGamma();
+        Fibonacci fibonacci = new Fibonacci();
+        Huffman huffman = new Huffman();
+        
         // Processa a entrada com base na operação e no método escolhido
         switch (operacao) {
             case 1: // Codificação
                 switch (metodo) {
                     case 1:
-                    	EncodeGolomb encodeGolomb = new EncodeGolomb();
-                        System.out.println(encodeGolomb.encode(input));
+                        System.out.println(golomb.encode(input));
                         break;
                     case 2:
-                    	EncodeEliasGamma encodeEliasGamma = new EncodeEliasGamma();
-                        System.out.println(encodeEliasGamma.encode(input));
+                    	
+                        System.out.println(eliasGama.encode(input));
                         break;
                     case 3:
-                    	EncodeFibonacci encodeFibonacci = new EncodeFibonacci();
-                        System.out.println(encodeFibonacci.encode(input));
+                    	
+                        System.out.println(fibonacci.encode(input));
                         break;
                     case 4:
-                    	EncodeHuffman encodeHuffman = new EncodeHuffman();
-                        System.out.println(encodeHuffman.encode(input));
+                    	
+                        System.out.println(huffman.encode(input));
                         break;
                 }
                 break;
             case 2: // Decodificação
                 switch (metodo) {
                     case 1:
-                        System.out.println("Decodificando com Golomb: " + input);
+                        System.out.println(golomb.decode(input));
                         break;
                     case 2:
                         System.out.println("Decodificando com Elias-Gamma: " + input);

@@ -1,13 +1,17 @@
 package encodeDecodeTGA;
 
-public class EncodeGolomb implements Encoder{
+public class Golomb implements Encoder{
 	
 	private int k = 8;
 	private int stopBit = 1;
 	private int prefixo;
 	private int sufixo;
+	
 	private String caracterCodificado;
 	private String inputCodificado = "";
+	
+	private char caracterDecodificado;
+	private String inputDecodificado = "";
 	
 	public String encode(String input) {
 		System.out.println("Codificando com Golomb: " + input);
@@ -50,5 +54,33 @@ public class EncodeGolomb implements Encoder{
 		System.out.println("Resultado da codificação Golomb de: ");
         return inputCodificado;
     }
+	
+	public String decode(String input) {
+		System.out.println("Decodificando com Golomb: " + input);
+		
+		char caracteres[] = input.toCharArray();
+		
+		int quantZerosPrefixo = 0;
+		
+		for(int i = 0; i < caracteres.length; i++) {
+			if(caracteres[i] != '1') {
+				quantZerosPrefixo++;
+			}
+			else {
+				String sufixoBinario = caracteres[i+1] + "" + caracteres[i+2] + "" + caracteres[i+3];
+				sufixo = Integer.parseInt(sufixoBinario, 2);
+				
+				int valorASCII = quantZerosPrefixo * k + sufixo;
+				caracterDecodificado = (char) valorASCII;
+				inputDecodificado = inputDecodificado + caracterDecodificado;
+				quantZerosPrefixo = 0;
+				i += 3;
+			}
+			
+		}
+		
+		System.out.println("Resultado da decodificação Golomb de: ");
+		return inputDecodificado;
+	}
 
 }

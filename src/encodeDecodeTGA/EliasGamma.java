@@ -1,6 +1,6 @@
 package encodeDecodeTGA;
 
-public class EncodeEliasGamma implements Encoder{
+public class EliasGamma implements Encoder{
 	
 	@Override
 	public String encode(String input) {
