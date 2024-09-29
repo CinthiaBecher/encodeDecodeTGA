@@ -13,6 +13,8 @@ public class Huffman implements Encoder {
 		
 		arvore.geraArvore(quantCaracteres);
 		arvore.imprimirArvore(arvore.getRaiz());
+		
+		System.out.println(arvore.percorreArvore(arvore.getRaiz(), 'h', ""));
 
 		return "Resultado da codificação Huffman de: ";
 	}

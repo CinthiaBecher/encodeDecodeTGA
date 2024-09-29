@@ -9,7 +9,7 @@ public class ArvoreBinaria {
 	public ArvoreBinaria() {
 		raiz = null;
 	}
-	
+
 	public Node getRaiz() {
 		return this.raiz;
 	}
@@ -27,9 +27,9 @@ public class ArvoreBinaria {
 	}
 
 	public void geraArvore(HashMap<Character, Integer> quantCaracteres) {
-		
+
 		Stack<Character> pilha = this.criaFolhas(quantCaracteres);
-		
+
 		// Arvore vazia
 		while (!pilha.empty()) {
 			if (raiz == null) {
@@ -59,18 +59,35 @@ public class ArvoreBinaria {
 
 	public void imprimirArvore(Node no) {
 		if (no != null) {
-			if(no instanceof Folha) {
-				System.out.println((Folha)no);
+			if (no instanceof Folha) {
+				System.out.println((Folha) no);
 				imprimirArvore(no.getEsquerda());
 				imprimirArvore(no.getDireita());
-			}
-			else {
+			} else {
 				System.out.println(no);
 				imprimirArvore(no.getEsquerda());
 				imprimirArvore(no.getDireita());
 			}
 		}
 
+	}
+
+	public String percorreArvore(Node no, char caracter, String resultado) {
+		if (no != null) {
+			if (no instanceof Folha) {
+				if (((Folha) no).getCaracter() == caracter)
+					return resultado + "0";
+
+			} else {
+				if (((Folha) no.getEsquerda()).getCaracter() == caracter)
+					return resultado + "0";
+				else {
+					resultado = resultado + "1";
+					return percorreArvore(no.getDireita(), caracter, resultado);
+				}
+			}
+		}
+		return resultado;
 	}
 
 }
