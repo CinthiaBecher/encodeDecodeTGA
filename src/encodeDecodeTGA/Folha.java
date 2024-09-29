@@ -1,11 +1,11 @@
 package encodeDecodeTGA;
 
-public class NodeRaiz {
+public class Folha extends Node{
 	
 	private char caracter;
 	private int frequencia;
 	
-	public NodeRaiz (char caracter, int frequencia) {
+	public Folha (char caracter, int frequencia) {
 		this.caracter = caracter;
 		this.frequencia = frequencia;
 	}

@@ -56,7 +56,7 @@ public class Huffman implements Encoder {
 		});
 		
 		// Inverte a ordem da lista para ficar em ordem descrescente
-		//Collections.reverse(lista);
+		Collections.reverse(lista);
 		
 		// Passa a lista ordenada de volta para um HashMap
 		HashMap<Character, Integer> mapOrdenado = new LinkedHashMap<Character, Integer>();
