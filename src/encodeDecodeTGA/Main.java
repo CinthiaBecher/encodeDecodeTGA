@@ -7,17 +7,17 @@ public class Main {
 	public static void main(String[] args) {
 
 		Scanner scanner = new Scanner(System.in);
-		boolean continuar = true; // Controla se o programa continua executando
+		boolean proceed = true; // Controla se o programa continua executando
 
-		while (continuar) {
+		while (proceed) {
 			// Escolha entre codificação ou decodificação
 			System.out.println("Escolha a operação que deseja realizar:");
 			System.out.println("1 - Codificação");
 			System.out.println("2 - Decodificação");
 
-			int operacao = scanner.nextInt();
+			int option = scanner.nextInt();
 
-			if (operacao != 1 && operacao != 2) {
+			if (option != 1 && option != 2) {
 				System.out.println("Opção inválida. Encerrando o programa.");
 				return;
 			}
@@ -29,9 +29,9 @@ public class Main {
 			System.out.println("3 - Fibonacci/Zeckendorf");
 			System.out.println("4 - Huffman");
 
-			int metodo = scanner.nextInt();
+			int method = scanner.nextInt();
 
-			if (metodo < 1 || metodo > 4) {
+			if (method < 1 || method > 4) {
 				System.out.println("Método inválido. Encerrando o programa.");
 				return;
 			}
@@ -47,9 +47,9 @@ public class Main {
 			Huffman huffman = new Huffman();
 
 			// Processa a entrada com base na operação e no método escolhido
-			switch (operacao) {
+			switch (option) {
 			case 1: // Codificação
-				switch (metodo) {
+				switch (method) {
 				case 1:
 					System.out.println(golomb.encode(input));
 					break;
@@ -61,8 +61,8 @@ public class Main {
 					break;
 				case 4:
 					System.out.println("Deseja decodificar o resultado também? (S/N)");
-					String resposta = scanner.nextLine().trim().toUpperCase();
-					if (resposta.equals("S"))
+					String answer = scanner.nextLine().trim().toUpperCase();
+					if (answer.equals("S"))
 						huffman.encode(input, true);
 
 					else
@@ -72,7 +72,7 @@ public class Main {
 				}
 				break;
 			case 2: // Decodificação
-				switch (metodo) {
+				switch (method) {
 				case 1:
 					System.out.println(golomb.decode(input));
 					break;
@@ -88,9 +88,9 @@ public class Main {
 
 			// Pergunta se o usuário deseja realizar outra ação
 			System.out.println("Deseja realizar outra operação? (S/N)");
-			String resposta = scanner.nextLine().trim().toUpperCase();
-			if (!resposta.equals("S")) {
-				continuar = false;
+			String answer = scanner.nextLine().trim().toUpperCase();
+			if (!answer.equals("S")) {
+				proceed = false;
 				System.out.println("Encerrando o programa.");
 			}
 		}

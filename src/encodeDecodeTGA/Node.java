@@ -2,45 +2,45 @@ package encodeDecodeTGA;
 
 public class Node {
 
-	int frequencia;
+	int frequency;
 
-	Node esquerda;
-	Node direita;
+	Node left;
+	Node right;
 	
 	public Node() {
-		this.esquerda = null;
-		this.direita = null;
+		this.left = null;
+		this.right = null;
 	}
 
-	public Node(int frequencia) {
-		this.frequencia = frequencia;
-		this.esquerda = null;
-		this.direita = null;
+	public Node(int frequency) {
+		this.frequency = frequency;
+		this.left = null;
+		this.right = null;
 	}
 
-	public Node getEsquerda() {
-		return esquerda;
+	public Node getLeft() {
+		return left;
 	}
 
-	public void setEsquerda(Node esquerda) {
-		this.esquerda = esquerda;
+	public void setLeft(Node left) {
+		this.left = left;
 	}
 
-	public Node getDireita() {
-		return direita;
+	public Node getRight() {
+		return right;
 	}
 
-	public void setDireita(Node direita) {
-		this.direita = direita;
+	public void setRight(Node right) {
+		this.right = right;
 	}
 
-	public int getFrequencia() {
-		return frequencia;
+	public int getFrequency() {
+		return frequency;
 	}
 
 	@Override
 	public String toString() {
-		return "Node [frequencia=" + frequencia + "]";
+		return "Node [frequency=" + frequency + "]";
 	}
 	
 	

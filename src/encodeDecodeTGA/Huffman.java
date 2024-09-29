@@ -4,105 +4,105 @@ import java.util.*;
 
 public class Huffman {
 
-	public void encode(String input, boolean decodificar) {
+	public void encode(String input, boolean isDecodeActive) {
 		System.out.println("Codificando com Huffman: " + input);
 		
-		char[] caracteres = input.toCharArray();
+		char[] characters = input.toCharArray();
 		
-		HashMap<Character, Integer> quantCaracteres = countCaracteres(input);
+		HashMap<Character, Integer> quantCharacters = countCharacters(input);
 		
-		ArvoreBinaria arvore = new ArvoreBinaria();
+		BinaryTree tree = new BinaryTree();
 		
-		arvore.geraArvore(quantCaracteres);
-		arvore.imprimirArvore(arvore.getRaiz());
+		tree.buildTree(quantCharacters);
+		tree.printTree(tree.getRoot());
 		
-		String inputCodificado = "";
+		String result = "";
 		
-		for (int i = 0; i < caracteres.length; i++) {
-			inputCodificado = inputCodificado + arvore.percorreArvoreCodificacao(arvore.getRaiz(), caracteres[i], "");
+		for (int i = 0; i < characters.length; i++) {
+			result = result + tree.readTreeEncode(tree.getRoot(), characters[i], "");
 		}
 		
-		System.out.println("Resultado da codificação Huffman de: " + inputCodificado);
+		System.out.println("Resultado da codificação Huffman de: " + result);
 		
 		// Se o usuario quiser decodificar tambem, chama o metodo de decode
-		if(decodificar) {
-			System.out.println("Resultado da codificação Huffman de: " + this.decode(inputCodificado, arvore));
+		if(isDecodeActive) {
+			System.out.println("Resultado da codificação Huffman de: " + this.decode(result, tree));
 			
 		}
 	}
 	
-	public String decode(String input, ArvoreBinaria arvore) {
+	public String decode(String input, BinaryTree tree) {
 		System.out.println("Decodificando com Huffman: " + input);
 		
-		char[] binario = input.toCharArray();
+		char[] binary = input.toCharArray();
 		
-		String inputDecodificado = "";
+		String result = "";
 		
-		Node nodeAtual = arvore.getRaiz();
+		Node currentNode = tree.getRoot();
 		
-		for(int i = 0; i < binario.length; i++) {
-			nodeAtual = arvore.percorreArvoreDecode(nodeAtual, binario[i]);
+		for(int i = 0; i < binary.length; i++) {
+			currentNode = tree.readTreeDecode(currentNode, binary[i]);
 			
-			if (nodeAtual instanceof Folha) {
-				inputDecodificado = inputDecodificado + ((Folha)nodeAtual).getCaracter();
-				nodeAtual = arvore.getRaiz();
+			if (currentNode instanceof Leaf) {
+				result = result + ((Leaf)currentNode).getCharacter();
+				currentNode = tree.getRoot();
 			}
 			
 		}
 		
-		return inputDecodificado;
+		return result;
 	}
 	
 	// Metodo para contar a quantidade de vezes que cada caracter aparece
-	public static HashMap<Character, Integer> countCaracteres(String input){
+	public static HashMap<Character, Integer> countCharacters(String input){
 		
-		char[] caracteres = input.toCharArray();
+		char[] characters = input.toCharArray();
 
-		HashMap<Character, Integer> contCaracteres = new HashMap<>();
+		HashMap<Character, Integer> contCharacters = new HashMap<>();
 
-		for (int i = 0; i < caracteres.length; i++) {
-			if (contCaracteres.containsKey(caracteres[i])) {
-				contCaracteres.replace(caracteres[i], contCaracteres.get(caracteres[i]) + 1);
+		for (int i = 0; i < characters.length; i++) {
+			if (contCharacters.containsKey(characters[i])) {
+				contCharacters.replace(characters[i], contCharacters.get(characters[i]) + 1);
 			} else {
-				contCaracteres.put(caracteres[i], 1);
+				contCharacters.put(characters[i], 1);
 			}
 		}
 		
-		HashMap<Character, Integer> contCaracteresOrdenado = sortMapByValue(contCaracteres);
+		HashMap<Character, Integer> contCharactersSorted = sortMapByValue(contCharacters);
 		
-		System.out.printf("Caracteres: %s\n", contCaracteresOrdenado.keySet());
-		System.out.printf("Quantidade: %s\n", contCaracteresOrdenado.values());
+		System.out.printf("Caracteres: %s\n", contCharactersSorted.keySet());
+		System.out.printf("Quantidade: %s\n", contCharactersSorted.values());
 		
-		return contCaracteresOrdenado;
+		return contCharactersSorted;
 		
 	}
 	
 	
 	// Metodo para ordenar o HashMap por valores
-	public static HashMap<Character, Integer> sortMapByValue(HashMap<Character, Integer> caracteres) {
+	public static HashMap<Character, Integer> sortMapByValue(HashMap<Character, Integer> caracters) {
 	
 		
 		// Cria uma lista com os elementos do HashMap para ordenar
-		List<Map.Entry<Character, Integer>> lista = new ArrayList<Map.Entry<Character, Integer>>(caracteres.entrySet());
+		List<Map.Entry<Character, Integer>> list = new ArrayList<Map.Entry<Character, Integer>>(caracters.entrySet());
 
 		// Ordena a lista com base no valor em ordem crescente
-		Collections.sort(lista, new Comparator<Map.Entry<Character, Integer>>() {
-			public int compare(Map.Entry<Character, Integer> caracter1, Map.Entry<Character, Integer> caracter2) {
-				return (caracter1.getValue()).compareTo(caracter2.getValue());
+		Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
+			public int compare(Map.Entry<Character, Integer> character1, Map.Entry<Character, Integer> character2) {
+				return (character1.getValue()).compareTo(character2.getValue());
 			}
 		});
 		
 		// Inverte a ordem da lista para ficar em ordem descrescente
-		Collections.reverse(lista);
+		Collections.reverse(list);
 		
 		// Passa a lista ordenada de volta para um HashMap
-		HashMap<Character, Integer> mapOrdenado = new LinkedHashMap<Character, Integer>();
+		HashMap<Character, Integer> mapSorted = new LinkedHashMap<Character, Integer>();
 		
-		for (Map.Entry<Character, Integer> caracter : lista) {
-			mapOrdenado.put(caracter.getKey(), caracter.getValue());
+		for (Map.Entry<Character, Integer> character : list) {
+			mapSorted.put(character.getKey(), character.getValue());
 		}
 		
-		return mapOrdenado;
+		return mapSorted;
 	}
 
 }
