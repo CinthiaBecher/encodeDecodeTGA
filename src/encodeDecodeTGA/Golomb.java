@@ -1,6 +1,6 @@
 package encodeDecodeTGA;
 
-public class Golomb implements Encoder{
+public class Golomb{
 	
 	private int k = 8;
 	private int stopBit = 1;

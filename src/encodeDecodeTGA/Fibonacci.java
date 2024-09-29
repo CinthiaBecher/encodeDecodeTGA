@@ -2,7 +2,7 @@ package encodeDecodeTGA;
 
 import java.util.ArrayList;
 
-public class Fibonacci implements Encoder {
+public class Fibonacci {
 
     private String inputCodificado = "";
 

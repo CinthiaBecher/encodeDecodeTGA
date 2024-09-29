@@ -2,11 +2,13 @@ package encodeDecodeTGA;
 
 import java.util.*;
 
-public class Huffman implements Encoder {
+public class Huffman {
 
-	public String encode(String input) {
+	public void encode(String input, boolean decodificar) {
 		System.out.println("Codificando com Huffman: " + input);
-
+		
+		char[] caracteres = input.toCharArray();
+		
 		HashMap<Character, Integer> quantCaracteres = countCaracteres(input);
 		
 		ArvoreBinaria arvore = new ArvoreBinaria();
@@ -14,9 +16,41 @@ public class Huffman implements Encoder {
 		arvore.geraArvore(quantCaracteres);
 		arvore.imprimirArvore(arvore.getRaiz());
 		
-		System.out.println(arvore.percorreArvore(arvore.getRaiz(), 'h', ""));
-
-		return "Resultado da codificação Huffman de: ";
+		String inputCodificado = "";
+		
+		for (int i = 0; i < caracteres.length; i++) {
+			inputCodificado = inputCodificado + arvore.percorreArvoreCodificacao(arvore.getRaiz(), caracteres[i], "");
+		}
+		
+		System.out.println("Resultado da codificação Huffman de: " + inputCodificado);
+		
+		// Se o usuario quiser decodificar tambem, chama o metodo de decode
+		if(decodificar) {
+			System.out.println("Resultado da codificação Huffman de: " + this.decode(inputCodificado, arvore));
+			
+		}
+	}
+	
+	public String decode(String input, ArvoreBinaria arvore) {
+		System.out.println("Decodificando com Huffman: " + input);
+		
+		char[] binario = input.toCharArray();
+		
+		String inputDecodificado = "";
+		
+		Node nodeAtual = arvore.getRaiz();
+		
+		for(int i = 0; i < binario.length; i++) {
+			nodeAtual = arvore.percorreArvoreDecode(nodeAtual, binario[i]);
+			
+			if (nodeAtual instanceof Folha) {
+				inputDecodificado = inputDecodificado + ((Folha)nodeAtual).getCaracter();
+				nodeAtual = arvore.getRaiz();
+			}
+			
+		}
+		
+		return inputDecodificado;
 	}
 	
 	// Metodo para contar a quantidade de vezes que cada caracter aparece

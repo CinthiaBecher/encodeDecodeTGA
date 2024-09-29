@@ -33,16 +33,27 @@ public class ArvoreBinaria {
 		// Arvore vazia
 		while (!pilha.empty()) {
 			if (raiz == null) {
-
-				char c1 = pilha.pop();
-				char c2 = pilha.pop();
-
-				Folha f1 = new Folha(c1, quantCaracteres.get(c1));
-				Folha f2 = new Folha(c2, quantCaracteres.get(c2));
-
-				raiz = new Node(f1.getFrequencia() + f2.getFrequencia());
-				raiz.setDireita(f1);
-				raiz.setEsquerda(f2);
+				// Caso que so tenho 1 caracter
+				if(pilha.size() < 2) {
+					char c = pilha.pop();
+					
+					Folha f = new Folha(c, quantCaracteres.get(c));
+					
+					raiz = new Node(f.getFrequencia());
+					raiz.setEsquerda(f);
+					
+				}
+				else {
+					char c1 = pilha.pop();
+					char c2 = pilha.pop();
+	
+					Folha f1 = new Folha(c1, quantCaracteres.get(c1));
+					Folha f2 = new Folha(c2, quantCaracteres.get(c2));
+	
+					raiz = new Node(f1.getFrequencia() + f2.getFrequencia());
+					raiz.setDireita(f1);
+					raiz.setEsquerda(f2);
+				}
 			} else {
 				char c = pilha.pop();
 
@@ -72,22 +83,34 @@ public class ArvoreBinaria {
 
 	}
 
-	public String percorreArvore(Node no, char caracter, String resultado) {
+	public String percorreArvoreCodificacao(Node no, char caracter, String resultado) {
 		if (no != null) {
 			if (no instanceof Folha) {
 				if (((Folha) no).getCaracter() == caracter)
-					return resultado + "0";
+					return resultado;
 
 			} else {
 				if (((Folha) no.getEsquerda()).getCaracter() == caracter)
 					return resultado + "0";
+				else if(no.getDireita() instanceof Folha && ((Folha) no.getDireita()).getCaracter() == caracter) {
+					return resultado + "1";
+				}
 				else {
 					resultado = resultado + "1";
-					return percorreArvore(no.getDireita(), caracter, resultado);
+					return percorreArvoreCodificacao(no.getDireita(), caracter, resultado);
 				}
 			}
 		}
 		return resultado;
+	}
+	
+	public Node percorreArvoreDecode(Node no, char binario) {
+		if(binario == '1') {
+			return no.getDireita();
+		}
+		else {
+			return no.getEsquerda();
+		}
 	}
 
 }
