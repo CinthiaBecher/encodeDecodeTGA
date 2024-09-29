@@ -3,21 +3,23 @@ package encodeDecodeTGA;
 import java.util.*;
 
 public class Huffman {
-
+	
 	public void encode(String input, boolean isDecodeActive) {
 		System.out.println("Codificando com Huffman: " + input);
 		
 		char[] characters = input.toCharArray();
 		
+		// Conta a quantidade de vezes que cada caracter apareceu
 		HashMap<Character, Integer> quantCharacters = countCharacters(input);
 		
 		BinaryTree tree = new BinaryTree();
 		
+		// Constroi a arvore binaria de huffman
 		tree.buildTree(quantCharacters);
-		tree.printTree(tree.getRoot());
 		
 		String result = "";
 		
+		// Codifica a entrada com base na arvore binaria criada
 		for (int i = 0; i < characters.length; i++) {
 			result = result + tree.readTreeEncode(tree.getRoot(), characters[i], "");
 		}
@@ -43,6 +45,7 @@ public class Huffman {
 		for(int i = 0; i < binary.length; i++) {
 			currentNode = tree.readTreeDecode(currentNode, binary[i]);
 			
+			// Se chegar numa folha, quer dizer que achou o caracter, entao adiciona no resultado
 			if (currentNode instanceof Leaf) {
 				result = result + ((Leaf)currentNode).getCharacter();
 				currentNode = tree.getRoot();
@@ -59,26 +62,25 @@ public class Huffman {
 		char[] characters = input.toCharArray();
 
 		HashMap<Character, Integer> contCharacters = new HashMap<>();
-
+		
 		for (int i = 0; i < characters.length; i++) {
+			// Se o caracter ja foi mapeado, acrescenta 1 na sua conta
 			if (contCharacters.containsKey(characters[i])) {
 				contCharacters.replace(characters[i], contCharacters.get(characters[i]) + 1);
+			// Se nao foi mapeado ainda, mapeia com a quantidade 1
 			} else {
 				contCharacters.put(characters[i], 1);
 			}
 		}
 		
+		// Chama o metodo para ordenar o mapa de caracteres
 		HashMap<Character, Integer> contCharactersSorted = sortMapByValue(contCharacters);
-		
-		System.out.printf("Caracteres: %s\n", contCharactersSorted.keySet());
-		System.out.printf("Quantidade: %s\n", contCharactersSorted.values());
 		
 		return contCharactersSorted;
 		
 	}
 	
-	
-	// Metodo para ordenar o HashMap por valores
+	// Metodo para ordenar o HashMap por valores em ordem decrescente
 	public static HashMap<Character, Integer> sortMapByValue(HashMap<Character, Integer> caracters) {
 	
 		
