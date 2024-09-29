@@ -38,4 +38,11 @@ public class Node {
 		return frequencia;
 	}
 
+	@Override
+	public String toString() {
+		return "Node [frequencia=" + frequencia + "]";
+	}
+	
+	
+
 }

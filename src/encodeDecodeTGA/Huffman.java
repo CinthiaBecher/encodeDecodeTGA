@@ -8,12 +8,13 @@ public class Huffman implements Encoder {
 		System.out.println("Codificando com Huffman: " + input);
 
 		HashMap<Character, Integer> quantCaracteres = countCaracteres(input);
+		
+		ArvoreBinaria arvore = new ArvoreBinaria();
+		
+		arvore.geraArvore(quantCaracteres);
+		arvore.imprimirArvore(arvore.getRaiz());
 
 		return "Resultado da codificação Huffman de: ";
-	}
-	
-	public void criaArvoreHuffman(HashMap<Character, Integer> quantCaracteres) {
-		
 	}
 	
 	// Metodo para contar a quantidade de vezes que cada caracter aparece

@@ -17,4 +17,10 @@ public class Folha extends Node{
 	public int getFrequencia() {
 		return frequencia;
 	}
+
+	@Override
+	public String toString() {
+		return "Folha [caracter=" + caracter + ", frequencia=" + frequencia + "]";
+	}
+	
 }
