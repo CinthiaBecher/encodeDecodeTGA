@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Fibonacci {
 
-    private String inputCodificado = "";
+    private String inputEncoded = "";
 
     public String encode(String input) {
         System.out.println("Codificando com Fibonacci: " + input);
@@ -34,23 +34,23 @@ public class Fibonacci {
             }
 
             // Inverte a string para que a ordem corresponda ao array original
-            String caracterCodificado = result.reverse().toString();
+            String characterEncoded = result.reverse().toString();
             
             // Adicionando stop bit
             if(i < caracteresInput.length -1)
-            	caracterCodificado = caracterCodificado + "1";
+            	characterEncoded = characterEncoded + "1";
 
             System.out.println("Caracter: " + caracteresInput[i]);
          // Imprimindo o resultado
             for (int num : fibonacci) {
                 System.out.print(num + " ");
             }
-            System.out.println("Codigo: " + caracterCodificado);
+            System.out.println("Codigo: " + characterEncoded);
             
-            inputCodificado = inputCodificado + caracterCodificado;
+            inputEncoded = inputEncoded + characterEncoded;
         }
 
-        return "Resultado da codificação Fibonacci : " + inputCodificado;
+        return "Resultado da codificação Fibonacci : " + inputEncoded;
     }
 
     public String decode(String input) {

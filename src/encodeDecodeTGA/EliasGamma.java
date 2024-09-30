@@ -2,7 +2,7 @@ package encodeDecodeTGA;
 
 public class EliasGamma{
 	
-	private String inputCodificado = "";
+	private String inputEncoded = "";
 	
 	public String encode(String input) {
    		System.out.println("Codificando com Elias-Gamma: " + input);
@@ -27,15 +27,15 @@ public class EliasGamma{
 	        String binaryRemainder = String.format("%" + N + "s", Integer.toBinaryString(remainder)).replace(' ', '0');
 	        
 	        // Combinar a codificação unária e o binário restante
-	        String caracterCodificado = unary + binaryRemainder;
+	        String characterEncoded = unary + binaryRemainder;
 	        
 	        System.out.println("Caracter: " + caracteresInput[i]);
-			System.out.println("Codigo: " + caracterCodificado);
+			System.out.println("Codigo: " + characterEncoded);
 			
-			inputCodificado = inputCodificado + caracterCodificado;
+			inputEncoded = inputEncoded + characterEncoded;
    		}
       
-        return "Resultado da codificação Elias-Gamma: " + inputCodificado;
+        return "Resultado da codificação Elias-Gamma: " + inputEncoded;
     
 	}
 	
