@@ -20,7 +20,7 @@ public class Leaf extends Node{
 
 	@Override
 	public String toString() {
-		return "Leaf [character=" + character + ", frequency=" + frequency + "]";
+		return "" + frequency + "(" + character + ")";
 	}
 	
 }

@@ -40,7 +40,7 @@ public class Node {
 
 	@Override
 	public String toString() {
-		return "Node [frequency=" + frequency + "]";
+		return "" + frequency;
 	}
 	
 	

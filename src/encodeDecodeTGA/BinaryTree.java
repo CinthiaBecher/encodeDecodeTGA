@@ -80,16 +80,36 @@ public class BinaryTree {
 	}
 
 	// Imprime a arvore
-	public void printTree(Node node) {
+	public void printTree(Node node, int i) {
 		if (node != null) {
 			if (node instanceof Leaf) {
-				System.out.println((Leaf) node);
-				printTree(node.getLeft());
-				printTree(node.getRight());
+				for (int j = 0; j < i - 2; j++) {
+					System.out.print("\t");
+				}
+				System.out.print((Leaf) node);
+
 			} else {
-				System.out.println(node);
-				printTree(node.getLeft());
-				printTree(node.getRight());
+				// Se estiver na raiz
+				if (i == 0) {
+					System.out.println("\t" + node);
+					printTree(node.getLeft(), i++);
+					printTree(node.getRight(), i += 2);
+				} else {
+					System.out.println("\t\t" + node);
+
+					// Se o da direita for folha, quer dizer que cheguei no fim da arvore
+					if (node.getRight() instanceof Leaf) {
+						for (int j = 0; j < i - 2; j++) {
+							System.out.print("\t");
+						}
+						System.out.print((Leaf) node.getLeft());
+						System.out.println("\t\t" + (Leaf) node.getRight());
+					} else {
+						printTree(node.getLeft(), i++);
+						printTree(node.getRight(), i++);
+					}
+				}
+
 			}
 		}
 

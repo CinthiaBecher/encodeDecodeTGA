@@ -16,7 +16,8 @@ public class Huffman {
 		
 		// Constroi a arvore binaria de huffman
 		tree.buildTree(quantCharacters);
-		tree.printTree(tree.getRoot());
+		tree.printTree(tree.getRoot(), 0);
+		System.out.println();
 
 		
 		String result = "";
