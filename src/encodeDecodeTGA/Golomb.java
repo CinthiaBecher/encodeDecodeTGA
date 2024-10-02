@@ -45,9 +45,6 @@ public class Golomb{
 			
 			caracterCodificado = caracterCodificado + sufixoBinary;
 			
-			System.out.println("Caracter: " + caracteresInput[i]);
-			System.out.println("Codigo: " + caracterCodificado);
-			
 			inputCodificado = inputCodificado + caracterCodificado;
 		}
 		
