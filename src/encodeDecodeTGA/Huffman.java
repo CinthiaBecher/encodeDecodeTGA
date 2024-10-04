@@ -27,17 +27,18 @@ public class Huffman {
 			result = result + tree.readTreeEncode(tree.getRoot(), characters[i], "");
 		}
 		
-		System.out.println("Resultado da codificação Huffman de: " + result);
+		System.out.println("Resultado da codificação de Huffman: " + result);
 		
 		// Se o usuario quiser decodificar tambem, chama o metodo de decode
 		if(isDecodeActive) {
-			System.out.println("Resultado da codificação Huffman de: " + this.decode(result, tree));
-			
+			System.out.println("-----------------------------------------");
+			System.out.println("Resultado da codificação de Huffman: "); 
+			System.out.println(this.decode(result, tree));
+			System.out.println("-----------------------------------------");
 		}
 	}
 	
 	public String decode(String input, BinaryTree tree) {
-		System.out.println("Decodificando com Huffman: " + input);
 		
 		char[] binary = input.toCharArray();
 		

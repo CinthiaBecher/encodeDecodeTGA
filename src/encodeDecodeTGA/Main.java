@@ -27,7 +27,9 @@ public class Main {
 			System.out.println("1 - Golomb");
 			System.out.println("2 - Elias-Gamma");
 			System.out.println("3 - Fibonacci/Zeckendorf");
-			System.out.println("4 - Huffman");
+			
+			if(option == 1)
+				System.out.println("4 - Huffman");
 
 			int method = scanner.nextInt();
 
@@ -52,12 +54,15 @@ public class Main {
 				switch (method) {
 				case 1:
 					System.out.println(golomb.encode(input));
+					System.out.println("-----------------------------------------");
 					break;
 				case 2:
 					System.out.println(eliasGama.encode(input));
+					System.out.println("-----------------------------------------");
 					break;
 				case 3:
 					System.out.println(fibonacci.encode(input));
+					System.out.println("-----------------------------------------");
 					break;
 				case 4:
 					System.out.println("Deseja decodificar o resultado também? (S/N)");
@@ -75,12 +80,15 @@ public class Main {
 				switch (method) {
 				case 1:
 					System.out.println(golomb.decode(input));
+					System.out.println("-----------------------------------------");
 					break;
 				case 2:
 					System.out.println(eliasGama.decode(input));
+					System.out.println("-----------------------------------------");
 					break;
 				case 3:
 					System.out.println(fibonacci.decode(input));
+					System.out.println("-----------------------------------------");
 					break;
 				}
 				break;

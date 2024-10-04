@@ -4,14 +4,14 @@ public class Golomb{
 	
 	private int k = 8;
 	private int stopBit = 1;
-	private int prefixo;
-	private int sufixo;
+	private int prefix;
+	private int suffix;
 	
-	private String caracterCodificado;
-	private String inputCodificado = "";
+	private String characterEncoded;
+	private String inputEncoded = "";
 	
-	private char caracterDecodificado;
-	private String inputDecodificado = "";
+	private char characterDecoded;
+	private String inputDecoded = "";
 	
 	public String encode(String input) {
 		System.out.println("Codificando com Golomb: " + input);
@@ -19,37 +19,40 @@ public class Golomb{
 		char[] caracteresInput = input.toCharArray();
 		
 		for(int i = 0; i < caracteresInput.length; i++) {
-			caracterCodificado = "";
+			characterEncoded = "";
 			
 			int valorASCII = (int) caracteresInput[i]; // Converte char para o valor em ASCII
 			
 			if(valorASCII < k)
-				prefixo = 0;
+				prefix = 0;
 			else
-				prefixo = valorASCII / k;
-			sufixo = valorASCII % k;
+				prefix = valorASCII / k;
+			suffix = valorASCII % k;
 			
 			// Adiciona o prefixo
-			for(int j = 0; j < prefixo; j++)
-				caracterCodificado = caracterCodificado + 0;
+			for(int j = 0; j < prefix; j++)
+				characterEncoded = characterEncoded + 0;
 			
 			// Adiciona o stopBit
-			caracterCodificado = caracterCodificado + stopBit;
+			characterEncoded = characterEncoded + stopBit;
 			
 			// Adiciona o sufixo
-			String sufixoBinary = Integer.toBinaryString(sufixo);
+			String sufixoBinary = Integer.toBinaryString(suffix);
 			
 			while (sufixoBinary.length() < 3) {
 				sufixoBinary = 0 + sufixoBinary;
 			}
 			
-			caracterCodificado = caracterCodificado + sufixoBinary;
+			characterEncoded = characterEncoded + sufixoBinary;
 			
-			inputCodificado = inputCodificado + caracterCodificado;
+			System.out.println("Caracter: " + caracteresInput[i]);
+			System.out.println("Codigo: " + characterEncoded);
+			
+			inputEncoded = inputEncoded + characterEncoded;
 		}
 		
 		System.out.println("Resultado da codificação Golomb de: ");
-        return inputCodificado;
+        return inputEncoded;
     }
 	
 	public String decode(String input) {
@@ -65,11 +68,11 @@ public class Golomb{
 			}
 			else {
 				String sufixoBinario = caracteres[i+1] + "" + caracteres[i+2] + "" + caracteres[i+3];
-				sufixo = Integer.parseInt(sufixoBinario, 2);
+				suffix = Integer.parseInt(sufixoBinario, 2);
 				
-				int valorASCII = quantZerosPrefixo * k + sufixo;
-				caracterDecodificado = (char) valorASCII;
-				inputDecodificado = inputDecodificado + caracterDecodificado;
+				int valorASCII = quantZerosPrefixo * k + suffix;
+				characterDecoded = (char) valorASCII;
+				inputDecoded = inputDecoded + characterDecoded;
 				quantZerosPrefixo = 0;
 				i += 3;
 			}
@@ -77,7 +80,7 @@ public class Golomb{
 		}
 		
 		System.out.println("Resultado da decodificação Golomb de: ");
-		return inputDecodificado;
+		return inputDecoded;
 	}
 
 }
