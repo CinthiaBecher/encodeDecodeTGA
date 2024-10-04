@@ -103,7 +103,7 @@ public class Huffman {
 			}
 		});
 		
-		// Inverte a ordem da lista para ficar em ordem descrescente
+		// Inverte a ordem da lista para ficar em ordem decrescente
 		Collections.reverse(list);
 		
 		// Passa a lista ordenada de volta para um HashMap
