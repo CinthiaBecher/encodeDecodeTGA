@@ -32,7 +32,7 @@ public class Huffman {
 		// Se o usuario quiser decodificar tambem, chama o metodo de decode
 		if(isDecodeActive) {
 			System.out.println("-----------------------------------------");
-			System.out.println("Resultado da codificação de Huffman: "); 
+			System.out.println("Resultado da decodificação de Huffman: "); 
 			System.out.println(this.decode(result, tree));
 			System.out.println("-----------------------------------------");
 		}
