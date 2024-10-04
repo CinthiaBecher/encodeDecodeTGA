@@ -7,7 +7,7 @@ public class EliasGamma{
 	public String encode(String input) {
    		System.out.println("Codificando com Elias-Gamma: " + input);
    		
-   		//Transforma em ascii
+   		//Transforma em array
    		char[] caracteresInput = input.toCharArray();
    		
    		for(int i = 0; i < caracteresInput.length; i++) {
