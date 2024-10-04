@@ -77,8 +77,14 @@ public class Huffman {
 			}
 		}
 		
+		System.out.printf("Caracteres: %s\n", contCharacters.keySet());
+		System.out.printf("Quantidade: %s\n", contCharacters.values());
+		
 		// Chama o metodo para ordenar o mapa de caracteres
 		HashMap<Character, Integer> contCharactersSorted = sortMapByValue(contCharacters);
+		
+		System.out.printf("Caracteres: %s\n", contCharactersSorted.keySet());
+		System.out.printf("Quantidade: %s\n", contCharactersSorted.values());
 		
 		return contCharactersSorted;
 		
@@ -94,7 +100,12 @@ public class Huffman {
 		// Ordena a lista com base no valor em ordem crescente
 		Collections.sort(list, new Comparator<Map.Entry<Character, Integer>>() {
 			public int compare(Map.Entry<Character, Integer> character1, Map.Entry<Character, Integer> character2) {
-				return (character1.getValue()).compareTo(character2.getValue());
+				if (character1.getValue() > character2.getValue())
+					return 1;
+				else if (character1.getValue() < character2.getValue())
+					return -1;
+				else
+					return 0;
 			}
 		});
 		
