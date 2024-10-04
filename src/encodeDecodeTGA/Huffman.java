@@ -77,14 +77,8 @@ public class Huffman {
 			}
 		}
 		
-		System.out.printf("Caracteres: %s\n", contCharacters.keySet());
-		System.out.printf("Quantidade: %s\n", contCharacters.values());
-		
 		// Chama o metodo para ordenar o mapa de caracteres
 		HashMap<Character, Integer> contCharactersSorted = sortMapByValue(contCharacters);
-		
-		System.out.printf("Caracteres: %s\n", contCharactersSorted.keySet());
-		System.out.printf("Quantidade: %s\n", contCharactersSorted.values());
 		
 		return contCharactersSorted;
 		
