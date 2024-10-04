@@ -63,11 +63,14 @@ public class Golomb{
 		int quantZerosPrefixo = 0;
 		
 		for(int i = 0; i < caracteres.length; i++) {
+			// conta a quantidade de zeros ate chegar no stopbit
 			if(caracteres[i] != '1') {
 				quantZerosPrefixo++;
 			}
 			else {
+				// quando chegar, pega os proximos 3 caracteres e define eles como o sufixo
 				String sufixoBinario = caracteres[i+1] + "" + caracteres[i+2] + "" + caracteres[i+3];
+				// passa esse valor para inteiro
 				suffix = Integer.parseInt(sufixoBinario, 2);
 				
 				int valorASCII = quantZerosPrefixo * k + suffix;
