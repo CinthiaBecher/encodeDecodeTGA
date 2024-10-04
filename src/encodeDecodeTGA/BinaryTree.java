@@ -59,8 +59,9 @@ public class BinaryTree {
 
 					// A raiz tera a soma da frequencia das folhas inferiores
 					root = new Node(f1.getFrequency() + f2.getFrequency());
-					root.setLeft(f1);
-					root.setRight(f2);
+					
+					root.setRight(f1);
+					root.setLeft(f2);
 				}
 			} else {
 				char c = stack.pop();
